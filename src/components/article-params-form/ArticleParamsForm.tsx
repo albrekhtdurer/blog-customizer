@@ -2,6 +2,8 @@ import { ArrowButton } from 'src/ui/arrow-button';
 import { Button } from 'src/ui/button';
 import { useDisclosure } from 'src/hooks/useDisclosure';
 import { useRef, useEffect } from 'react';
+import { Select } from 'src/ui/select';
+import { fontFamilyOptions } from 'src/constants/articleProps';
 
 import styles from './ArticleParamsForm.module.scss';
 
@@ -35,6 +37,12 @@ export const ArticleParamsForm = () => {
 					isOpen ? ' ' + styles.container_open : ''
 				}`}>
 				<form className={styles.form}>
+					<Select
+						options={fontFamilyOptions}
+						selected={fontFamilyOptions[0]}
+						placeholder={fontFamilyOptions[0].title}
+						title='Шрифт'
+					/>
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' htmlType='reset' type='clear' />
 						<Button title='Применить' htmlType='submit' type='apply' />
