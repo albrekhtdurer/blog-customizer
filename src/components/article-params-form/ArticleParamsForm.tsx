@@ -7,12 +7,15 @@ import styles from './ArticleParamsForm.module.scss';
 
 export const ArticleParamsForm = () => {
 	const { isOpen, close, toggle } = useDisclosure(false);
-	const formContainer = useRef<HTMLDivElement | null>(null);
+	const formContainerRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
 		const handleOverlayClick = (event: MouseEvent) => {
 			const { target } = event;
-			if (target instanceof Node && !formContainer.current?.contains(target)) {
+			if (
+				target instanceof Node &&
+				!formContainerRef.current?.contains(target)
+			) {
 				isOpen && close?.();
 			}
 		};
@@ -25,7 +28,7 @@ export const ArticleParamsForm = () => {
 	}, [isOpen]);
 
 	return (
-		<div ref={formContainer}>
+		<div ref={formContainerRef}>
 			<ArrowButton isOpen={isOpen} onClick={toggle} />
 			<aside
 				className={`${styles.container}${
