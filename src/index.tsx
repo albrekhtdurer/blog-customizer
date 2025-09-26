@@ -15,7 +15,6 @@ const root = createRoot(domNode);
 const App = () => {
 	const [formState, setFormState] = useState(defaultArticleState);
 	const [articleState, setArticleState] = useState(defaultArticleState);
-	console.log(formState);
 
 	const resetHandler = () => {
 		setFormState(defaultArticleState);
