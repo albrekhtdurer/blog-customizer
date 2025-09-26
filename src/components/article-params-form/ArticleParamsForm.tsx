@@ -11,11 +11,18 @@ import {
 	fontColors,
 	backgroundColors,
 	contentWidthArr,
+	OptionType,
+	ArticleStateType,
 } from 'src/constants/articleProps';
 
 import styles from './ArticleParamsForm.module.scss';
 
-export const ArticleParamsForm = () => {
+type TArticleParamsFormProps = {
+	stateSetter: (formState: ArticleStateType) => void;
+	formState: ArticleStateType;
+};
+
+export const ArticleParamsForm = (props: TArticleParamsFormProps) => {
 	const { isOpen, close, toggle } = useDisclosure(false);
 	const formContainerRef = useRef<HTMLDivElement | null>(null);
 
@@ -37,6 +44,12 @@ export const ArticleParamsForm = () => {
 		};
 	}, [isOpen]);
 
+	const onChangeHandler = (param: string) => (option: OptionType) => {
+		props.stateSetter({
+			...props.formState,
+			[param]: option,
+		});
+	};
 	return (
 		<div ref={formContainerRef}>
 			<ArrowButton isOpen={isOpen} onClick={toggle} />
@@ -48,33 +61,38 @@ export const ArticleParamsForm = () => {
 					<label className={styles.formTitle}>Задайте параметры</label>
 					<Select
 						options={fontFamilyOptions}
-						selected={fontFamilyOptions[0]}
-						placeholder={fontFamilyOptions[0].title}
+						selected={props.formState.fontFamilyOption}
+						placeholder={props.formState.fontFamilyOption.title}
+						onChange={onChangeHandler('fontFamilyOption')}
 						title='Шрифт'
 					/>
 					<RadioGroup
 						options={fontSizeOptions}
 						name='font-size'
 						title='Размер шрифта'
-						selected={fontSizeOptions[1]}
+						selected={props.formState.fontSizeOption}
+						onChange={onChangeHandler('fontSizeOption')}
 					/>
 					<Select
 						options={fontColors}
-						selected={fontColors[0]}
-						placeholder={fontColors[0].title}
+						selected={props.formState.fontColor}
+						placeholder={props.formState.fontColor.title}
+						onChange={onChangeHandler('fontColor')}
 						title='Цвет шрифта'
 					/>
 					<Separator />
 					<Select
 						options={backgroundColors}
-						selected={backgroundColors[0]}
-						placeholder={backgroundColors[0].title}
+						selected={props.formState.backgroundColor}
+						placeholder={props.formState.backgroundColor.title}
+						onChange={onChangeHandler('backgroundColor')}
 						title='Цвет фона'
 					/>
 					<Select
 						options={contentWidthArr}
-						selected={contentWidthArr[0]}
-						placeholder={contentWidthArr[0].title}
+						selected={props.formState.contentWidth}
+						placeholder={props.formState.contentWidth.title}
+						onChange={onChangeHandler('contentWidth')}
 						title='Ширина контента'
 					/>
 					<div className={styles.bottomContainer}>
