@@ -10,6 +10,7 @@ import {
 	fontSizeOptions,
 	fontColors,
 	backgroundColors,
+	contentWidthArr,
 } from 'src/constants/articleProps';
 
 import styles from './ArticleParamsForm.module.scss';
@@ -68,6 +69,12 @@ export const ArticleParamsForm = () => {
 						selected={backgroundColors[0]}
 						placeholder={backgroundColors[0].title}
 						title='Цвет фона'
+					/>
+					<Select
+						options={contentWidthArr}
+						selected={contentWidthArr[0]}
+						placeholder={contentWidthArr[0].title}
+						title='Ширина контента'
 					/>
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' htmlType='reset' type='clear' />
