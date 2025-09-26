@@ -45,6 +45,7 @@ export const ArticleParamsForm = () => {
 					isOpen ? ' ' + styles.container_open : ''
 				}`}>
 				<form className={styles.form}>
+					<label className={styles.formTitle}>Задайте параметры</label>
 					<Select
 						options={fontFamilyOptions}
 						selected={fontFamilyOptions[0]}
