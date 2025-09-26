@@ -4,7 +4,7 @@ import { useDisclosure } from 'src/hooks/useDisclosure';
 import { useRef, useEffect } from 'react';
 import { Select } from 'src/ui/select';
 import { RadioGroup } from 'src/ui/radio-group';
-import { fontFamilyOptions, fontSizeOptions } from 'src/constants/articleProps';
+import { fontFamilyOptions, fontSizeOptions, fontColors } from 'src/constants/articleProps';
 
 import styles from './ArticleParamsForm.module.scss';
 
@@ -50,6 +50,13 @@ export const ArticleParamsForm = () => {
 						title='Размер шрифта'
 						selected={fontSizeOptions[1]}
 					/>
+					<Select
+						options={fontColors}
+						selected={fontColors[0]}
+						placeholder={fontColors[0].title}
+						title='Цвет шрифта'
+					/>
+
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' htmlType='reset' type='clear' />
 						<Button title='Применить' htmlType='submit' type='apply' />
