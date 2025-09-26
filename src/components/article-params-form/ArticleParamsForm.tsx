@@ -1,7 +1,7 @@
 import { ArrowButton } from 'src/ui/arrow-button';
 import { Button } from 'src/ui/button';
 import { useDisclosure } from 'src/hooks/useDisclosure';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, FormEvent, FormEventHandler } from 'react';
 import { Select } from 'src/ui/select';
 import { RadioGroup } from 'src/ui/radio-group';
 import { Separator } from 'src/ui/separator';
@@ -20,6 +20,8 @@ import styles from './ArticleParamsForm.module.scss';
 type TArticleParamsFormProps = {
 	stateSetter: (formState: ArticleStateType) => void;
 	formState: ArticleStateType;
+	onReset: () => void;
+	onSubmit: (e: React.SyntheticEvent<HTMLFormElement>) => void;
 };
 
 export const ArticleParamsForm = (props: TArticleParamsFormProps) => {
@@ -50,6 +52,7 @@ export const ArticleParamsForm = (props: TArticleParamsFormProps) => {
 			[param]: option,
 		});
 	};
+
 	return (
 		<div ref={formContainerRef}>
 			<ArrowButton isOpen={isOpen} onClick={toggle} />
@@ -57,7 +60,10 @@ export const ArticleParamsForm = (props: TArticleParamsFormProps) => {
 				className={`${styles.container}${
 					isOpen ? ' ' + styles.container_open : ''
 				}`}>
-				<form className={styles.form}>
+				<form
+					className={styles.form}
+					onSubmit={props.onSubmit}
+					onReset={props.onReset}>
 					<label className={styles.formTitle}>Задайте параметры</label>
 					<Select
 						options={fontFamilyOptions}
