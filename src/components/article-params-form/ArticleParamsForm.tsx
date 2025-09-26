@@ -4,6 +4,7 @@ import { useDisclosure } from 'src/hooks/useDisclosure';
 import { useRef, useEffect } from 'react';
 import { Select } from 'src/ui/select';
 import { RadioGroup } from 'src/ui/radio-group';
+import { Separator } from 'src/ui/separator';
 import { fontFamilyOptions, fontSizeOptions, fontColors } from 'src/constants/articleProps';
 
 import styles from './ArticleParamsForm.module.scss';
@@ -56,6 +57,7 @@ export const ArticleParamsForm = () => {
 						placeholder={fontColors[0].title}
 						title='Цвет шрифта'
 					/>
+					<Separator/>
 
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' htmlType='reset' type='clear' />
