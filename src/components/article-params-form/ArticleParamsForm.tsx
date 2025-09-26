@@ -9,6 +9,7 @@ import {
 	fontFamilyOptions,
 	fontSizeOptions,
 	fontColors,
+	backgroundColors,
 } from 'src/constants/articleProps';
 
 import styles from './ArticleParamsForm.module.scss';
@@ -62,7 +63,12 @@ export const ArticleParamsForm = () => {
 						title='Цвет шрифта'
 					/>
 					<Separator />
-
+					<Select
+						options={backgroundColors}
+						selected={backgroundColors[0]}
+						placeholder={backgroundColors[0].title}
+						title='Цвет фона'
+					/>
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' htmlType='reset' type='clear' />
 						<Button title='Применить' htmlType='submit' type='apply' />
