@@ -16,6 +16,7 @@ import {
 } from 'src/constants/articleProps';
 
 import styles from './ArticleParamsForm.module.scss';
+import clsx from 'clsx';
 
 type TArticleParamsFormProps = {
 	stateSetter: (formState: ArticleStateType) => void;
@@ -57,9 +58,7 @@ export const ArticleParamsForm = (props: TArticleParamsFormProps) => {
 		<div ref={formContainerRef}>
 			<ArrowButton isOpen={isOpen} onClick={toggle} />
 			<aside
-				className={`${styles.container}${
-					isOpen ? ' ' + styles.container_open : ''
-				}`}>
+				className={clsx(styles.container, { [styles.container_open]: isOpen })}>
 				<form
 					className={styles.form}
 					onSubmit={props.onSubmit}
