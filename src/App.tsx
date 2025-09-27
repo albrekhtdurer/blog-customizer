@@ -4,6 +4,7 @@ import { ArticleParamsForm } from './components/article-params-form';
 import { defaultArticleState } from './constants/articleProps';
 
 import styles from './styles/index.module.scss';
+import './styles/index.scss';
 
 const App = () => {
 	const [formState, setFormState] = useState(defaultArticleState);
