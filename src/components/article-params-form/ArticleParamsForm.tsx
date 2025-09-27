@@ -26,7 +26,7 @@ type TArticleParamsFormProps = {
 };
 
 export const ArticleParamsForm = (props: TArticleParamsFormProps) => {
-	const { isOpen, close, toggle } = useDisclosure(false);
+	const { isMenuOpen, close, toggle } = useDisclosure(false);
 	const formContainerRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
@@ -36,7 +36,7 @@ export const ArticleParamsForm = (props: TArticleParamsFormProps) => {
 				target instanceof Node &&
 				!formContainerRef.current?.contains(target)
 			) {
-				isOpen && close?.();
+				isMenuOpen && close?.();
 			}
 		};
 
@@ -45,7 +45,7 @@ export const ArticleParamsForm = (props: TArticleParamsFormProps) => {
 		return () => {
 			window.removeEventListener('mousedown', handleOverlayClick);
 		};
-	}, [isOpen]);
+	}, [isMenuOpen]);
 
 	const onChangeHandler = (param: string) => (option: OptionType) => {
 		props.stateSetter({
@@ -56,9 +56,11 @@ export const ArticleParamsForm = (props: TArticleParamsFormProps) => {
 
 	return (
 		<div ref={formContainerRef}>
-			<ArrowButton isOpen={isOpen} onClick={toggle} />
+			<ArrowButton isOpen={isMenuOpen} onClick={toggle} />
 			<aside
-				className={clsx(styles.container, { [styles.container_open]: isOpen })}>
+				className={clsx(styles.container, {
+					[styles.container_open]: isMenuOpen,
+				})}>
 				<form
 					className={styles.form}
 					onSubmit={props.onSubmit}

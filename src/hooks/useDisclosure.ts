@@ -9,25 +9,25 @@ export function useDisclosure(
 	initialState = false,
 	{ onOpen, onClose }: TDisclosureCallbacks = {}
 ) {
-	const [isOpen, setIsOpen] = useState(initialState);
+	const [isMenuOpen, setIsMenuOpen] = useState(initialState);
 
 	useEffect(() => {
-		setIsOpen(initialState);
+		setIsMenuOpen(initialState);
 	}, [initialState]);
 
 	const open = () => {
-		setIsOpen(true);
+		setIsMenuOpen(true);
 		onOpen && onOpen();
 	};
 
 	const close = () => {
-		setIsOpen(false);
+		setIsMenuOpen(false);
 		onClose && onClose();
 	};
 
 	const toggle = () => {
-		isOpen ? close() : open();
+		isMenuOpen ? close() : open();
 	};
 
-	return { isOpen, toggle, open, close };
+	return { isMenuOpen, toggle, open, close };
 }
