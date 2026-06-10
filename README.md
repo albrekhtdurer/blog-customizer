@@ -1,15 +1,15 @@
-# Учебный проект: Вёрстка проекта
+# Blog customizer
 
-В рамках проекта реализованы формы на "чистом" React для кастомизации страницы в блоге (выбор шрифта, размера шрифта, цвета текста и фона).
+In this educational project I developed and implemented several forms using React (no additional libraries beyond core React) to customize a blog page. Users can choose the font type, font size, font color, and background color.
 
-[Макет проекта](https://www.figma.com/file/FEeiiGLOsE7ktXbPpBxYoD/Custom-dropdown?type=design&node-id=0%3A1&mode=design&t=eXRJnWC6Xsuw0qR4-1)
+[Layout](LINK)
 
-## Запуск проекта
+## How to launch
 
-Выполнить команду 
+Launch the application:
 
-```
+```bash
 npm run start
 ```
 
-Приложение будет доступно по адресу `http://localhost:8080/`
+The app will be available at `http://localhost:8080/`
